@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body>
+<div class="form">
+    <div class="thumbnail"><i class="fa fa-user-md" aria-hidden="true"></i></div>
+    <form method="POST" action="signup.php" class="register-form" id="registration">
+        <input type="text" name="username" placeholder="username" data-validation="length" data-validation-length="min4"/>
+        <input type="password" name="password" placeholder="password" data-validation="length" data-validation-length="min4"/>
+        <input type="password" name="cpass" placeholder="confirm password" data-validation="length" data-validation-length="min4"/>
+        <input type="email" placeholder="email address" data-validation="email"/>
+        <input type="text" name="userId" placeholder="user id" data-validation="length" data-validation-length="min4"/>
+
+        <select name="types">
+            <option value="D">doctor</option>
+            <option value="P">patient</option>
+        </select>
+      
+        <button type="submit">create</button>
+        <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form method="POST" action="signin.php" class="login-form">
+        <input type="text" name="username" placeholder="username" data-validation="length" data-validation-length="max100"/>
+        <input type="password" name="password" placeholder="password" data-validation="length" data-validation-length="max100"/>
+        <button type="submit">login</button>
+
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script src="js/index.js"></script>
+<script src="js/jquery.form-validator.min.js"></script>
+
+<!--  <script type="text/javascript">
+ $(function(){
+   $.validate({
+       form : '#registration'
+     });
+   })
+ </script> -->
+
+</body>
+</html>
