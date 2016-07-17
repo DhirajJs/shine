@@ -8,24 +8,44 @@
 session_start();
 include_once 'connection.php';
 $docId = $_SESSION['login_user'];
-$sql = "SELECT * FROM patient WHERE doctorId='".$docId."'";
-
-$results = mysql_query($sql);
 ?>
 <html>
 <body>
 <h1>Patient list</h1>
+
+<h3>Search  Patient Details</h3>
+<p>You  may search either by Id or name</p>
+<form  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+name:<input  type="text" name="nameSearch"><br/>
+    patient id:<input  type="text" name="idSearch">
+    <input  type="submit" name="Search" value="Search">
+    <input  type="submit" name="Reset" value="Reset">
+</form>
+
+<?php
+$sql = "SELECT * FROM patient WHERE doctorId='".$docId."'";
+if(isset($_POST['Search'])):
+    $nameSearch = $_POST['nameSearch'];
+    $idSearch = $_POST['idSearch'];
+    $sql = "SELECT * FROM patient WHERE doctorId='".$docId."' AND (patientId ='".$idSearch."' OR name LIKE'". $nameSearch."')";
+endif;
+if(isset($_POST['Reset'])):
+    $sql = "SELECT * FROM patient WHERE doctorId='".$docId."'";
+endif;
+$results = mysql_query($sql);
+?>
+
+
+
 <table border="1">
-    <tr><td>Patient Id</td><td>Name</td><td>Age</td></tr>
+    <tr><td>Patient Id</td><td>Name</td></tr>
     <?php while ($row = mysql_fetch_array($results)) : ?>
         <tr>
             <td><?php echo $row['patientId'];?></td>
             <td><?php echo $row['name'];?></td>
-            <td><?php echo $row['age'];?></td>
             <td>
-                <form method="post" action="healthData.php">
-                    <input type="submit" name="action" value="diabetes"/>
-                    <input type="submit" name="action" value="bloodpressure"/>
+                <form method="post" action="consultation.php">
+                    <input type="submit" name="action" value="details"/>
                     <input type="hidden" name="id" value="<?php echo $row['patientId']; ?>"/>
                 </form>
             </td>
@@ -34,6 +54,4 @@ $results = mysql_query($sql);
 </table>
 </body>
 </html>
-
-
 

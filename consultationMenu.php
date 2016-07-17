@@ -2,11 +2,12 @@
 session_start();
 include_once 'welcome.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>consultation menu</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
@@ -24,17 +25,15 @@ include_once 'welcome.php';
 <div class="form">
     <div class="thumbnail"><i class="fa fa-user-md" aria-hidden="true"></i></div>
     <div class="dashboard">
-        <h1>Dashboard</h1>
-<!--        <a href="patientsDetails.php" class="button-link">Patient Info</a>-->
-       <a href="consultationMenu.php" class="button-link">Consultation</a>
+        <h1>Consultation Menu</h1>
+        <a href="signupPatient.html" class="button-link">New Patient</a>
+        <a href="patientsHealthData.php" class="button-link">Existing Patient</a>
         <?php if(isset( $_SESSION['user']) &&  $_SESSION['user']['types']=='D'){?>
-        <a href="patientsgraph.php" class="button-link">Statistics and Graphs</a>
+            <a href="patientsgraph.php" class="button-link">Statistics and Graphs</a>
         <?php } ?>
-        <a href="#calendar" class="button-link">Calendar</a>
-        <a href="notifications.php" class="button-link">Notifications</a>
         <?php  if($isLogin) { ?>
-        <a class="button-link" href="logout.php">Log out</a>
-      <?php } ?>
+            <a class="button-link" href="logout.php">Log out</a>
+        <?php } ?>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

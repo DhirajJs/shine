@@ -16,17 +16,14 @@
 <div class="form">
     <div class="thumbnail"><i class="fa fa-user-md" aria-hidden="true"></i></div>
     <form method="POST" action="signup.php" class="register-form" id="registration">
+        <input type="text" name="name" placeholder="name" data-validation="length" data-validation-length="min4"/>
         <input type="text" name="username" placeholder="username" data-validation="length" data-validation-length="min4"/>
         <input type="password" name="password" placeholder="password" data-validation="length" data-validation-length="min4"/>
-        <input type="password" name="cpass" placeholder="confirm password" data-validation="length" data-validation-length="min4"/>
-        <input type="email" placeholder="email address" data-validation="email"/>
-        <input type="text" name="userId" placeholder="user id" data-validation="length" data-validation-length="min4"/>
+        <input type="email" name="email" placeholder="email address" data-validation="email"/>
+        <input type="date" name="dob" placeholder="date of birth"/>
+        <input type="text" name="phone" placeholder="phone" data-validation="length" data-validation-length="min7"/>
+        <input type="text" name="address" placeholder="address"/>
 
-        <select name="types">
-            <option value="D">doctor</option>
-            <option value="P">patient</option>
-        </select>
-      
         <button type="submit">create</button>
         <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>

@@ -1,12 +1,8 @@
-<?php
-session_start();
-include_once 'welcome.php';
-?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Sign Up Patient Form</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
@@ -17,30 +13,25 @@ include_once 'welcome.php';
     <link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
 <body>
-
-
-
-
 <div class="form">
     <div class="thumbnail"><i class="fa fa-user-md" aria-hidden="true"></i></div>
-    <div class="dashboard">
-        <h1>Dashboard</h1>
-<!--        <a href="patientsDetails.php" class="button-link">Patient Info</a>-->
-       <a href="consultationMenu.php" class="button-link">Consultation</a>
-        <?php if(isset( $_SESSION['user']) &&  $_SESSION['user']['types']=='D'){?>
-        <a href="patientsgraph.php" class="button-link">Statistics and Graphs</a>
-        <?php } ?>
-        <a href="#calendar" class="button-link">Calendar</a>
-        <a href="notifications.php" class="button-link">Notifications</a>
-        <?php  if($isLogin) { ?>
-        <a class="button-link" href="logout.php">Log out</a>
-      <?php } ?>
-    </div>
+    <form method="POST" action="signupPatient.php" class="login-form">
+        <input type="text" name="name" placeholder="name" data-validation="length" data-validation-length="min4"/>
+        <input type="text" name="username" placeholder="username" data-validation="length" data-validation-length="min4"/>
+        <input type="password" name="password" placeholder="password" data-validation="length" data-validation-length="min4"/>
+        <input type="email" name="email" placeholder="email address" data-validation="email"/>
+        <input type="date" name="dob" placeholder="date of birth"/>
+        <input type="text" name="phone" placeholder="phone" data-validation="length" data-validation-length="min7"/>
+        <input type="text" name="address" placeholder="address"/>
+        <input type="text" name="userId" placeholder="user id"/>
+        <button type="submit">create</button>
+    </form>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 <script src="js/index.js"></script>
 <script src="js/jquery.form-validator.min.js"></script>
-
 
 <!--  <script type="text/javascript">
  $(function(){
